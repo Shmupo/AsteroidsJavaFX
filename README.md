@@ -1,2 +1,2 @@
-# WindowKillWindows
- WindowKill-like windows in JavaFX.
+# AsteroidsJavaFX
+ Asteroids in JavaFX.
