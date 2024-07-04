@@ -38,6 +38,7 @@ public class Projectile {
 
                 if (projectileHitWindowBorder()) {
                     stop();
+                    delete();
                 }
             }
         }.start();
@@ -52,46 +53,16 @@ public class Projectile {
         // Check if any part of the shape is outside the window
         if (!collision) {
             // left
-            if (shapeMinX < 0) {
+            if (shapeMinX < 0 || shapeMinY < 0 || shapeMaxX > pane.getWidth() || shapeMaxY > pane.getHeight()) {
                 collision = true;
-                int paneWidth = (int)pane.getPrefWidth();
-                pane.setPrefWidth(paneWidth + 100);
-                ship.shape.setTranslateX(ship.shape.getTranslateX() + 100); // also move the ship
-                stage.sizeToScene();
-                stage.setX(stage.getX() - 100);
-                return true;
-            }
-            
-            // top
-            if (shapeMinY < 0) {
-                collision = true;
-                int paneHeight = (int)pane.getPrefHeight();
-                pane.setPrefHeight(paneHeight + 100);
-                ship.shape.setTranslateY(ship.shape.getTranslateY() + 100); // also move the ship
-                stage.sizeToScene();
-                stage.setY(stage.getY() - 100);
-                return true;
-            }
-            
-            // right
-            if (shapeMaxX > pane.getWidth()) {
-                collision = true;
-                int paneWidth = (int)pane.getPrefWidth();
-                pane.setPrefWidth(paneWidth + 100);
-                stage.sizeToScene();
-                return true;
-            }
-            
-            // bottom
-            if (shapeMaxY > pane.getHeight()) {
-                collision = true;
-                int paneHeight = (int)pane.getPrefHeight();
-                pane.setPrefHeight(paneHeight + 100);
-                stage.sizeToScene();
                 return true;
             }
         }
 
         return false;
+    }
+
+    private void delete() {
+        pane.getChildren().remove(shape);
     }
 }

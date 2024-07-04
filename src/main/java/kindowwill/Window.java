@@ -16,8 +16,10 @@ public class Window extends Application {
     public static Pane pane;
     public static Stage stage;
 
-    private int windowX = 800;
-    private int windowY = 500;
+    public static AsteroidManager asteroidManager;
+
+    private int windowX = 1000;
+    private int windowY = 800;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,19 +35,15 @@ public class Window extends Application {
 
         ship.setupInput();
 
+        asteroidManager = new AsteroidManager(this);
+
         stage.setScene(scene);
         stage.show();
 
         Window.stage = stage;
-        stage.setResizable(Boolean.FALSE);
+        stage.setResizable(Boolean.FALSE); // disable user manual resizing
 
-        //expandWindowRight();
-    }
-
-    public void pushBorderRight() {
-        pane.setPrefSize(windowX + 500, windowY);
-        stage.setY(100);
-        stage.setX(100);
+        asteroidManager.addRandomAsteroid();
     }
 
     public static void main(String[] args) {
