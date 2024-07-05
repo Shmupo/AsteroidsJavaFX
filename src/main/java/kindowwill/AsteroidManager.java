@@ -1,6 +1,7 @@
 package kindowwill;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javafx.animation.AnimationTimer;
@@ -10,8 +11,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.util.Duration;
-
-import java.util.List;
 
 public class AsteroidManager {
     private static Window window;
@@ -74,7 +73,6 @@ public class AsteroidManager {
 
         pane.getChildren().add(asteroidShape);
         asteroids.add(asteroidShape);
-        System.out.println(asteroidShape.getRotate());
 
         placeAtBorder(asteroidShape);
     }

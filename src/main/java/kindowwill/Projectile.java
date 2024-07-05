@@ -4,7 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
+import javafx.scene.shape.Shape;
 
 public class Projectile {
     Circle shape;
@@ -12,8 +12,7 @@ public class Projectile {
     private static double radius = 5.0;
     private static double movementSpeed = 5.0;
     private static Pane pane = null;
-    private static Stage stage = null;
-    private static Ship ship = null;
+    public static AsteroidManager asteroidManager;
 
     // need this to make sure multiple projectile collisions for the same collision are not generated
     private Boolean collision = false;
@@ -25,8 +24,7 @@ public class Projectile {
         shape.setRotate(directionDegrees);
 
         this.pane = window.pane;
-        this.stage = window.stage;
-        this.ship = ship;
+
 
         new AnimationTimer() {
             public void handle(long now) {
@@ -37,6 +35,9 @@ public class Projectile {
                 shape.setTranslateY(shape.getTranslateY() + moveY);
 
                 if (projectileHitWindowBorder()) {
+                    stop();
+                    delete();
+                } else if (projectileHitAsteroid()) {
                     stop();
                     delete();
                 }
@@ -61,6 +62,21 @@ public class Projectile {
 
         return false;
     }
+
+    private Boolean projectileHitAsteroid() {
+    for (Shape asteroid : asteroidManager.asteroids) {
+        if (asteroid.getBoundsInParent().intersects(shape.getBoundsInParent())) {
+            if (!collision) {
+                collision = true;
+                pane.getChildren().remove(asteroid);
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 
     private void delete() {
         pane.getChildren().remove(shape);

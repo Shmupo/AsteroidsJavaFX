@@ -36,6 +36,8 @@ public class Window extends Application {
         ship.setupInput();
 
         asteroidManager = new AsteroidManager(this);
+        Ship.asteroidManager = asteroidManager;
+        Projectile.asteroidManager = asteroidManager;
 
         stage.setScene(scene);
         stage.show();
