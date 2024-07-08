@@ -2,6 +2,8 @@
 
 Simple overview of use/purpose.
 
+![AsteroidsJavaFX Gameplay](https://github.com/Shmupo/AsteroidsJavaFX/blob/main/AsteroidGameplay.gif "Gameplay")
+
 ## Description
 
 Asteroids game made in Java using JavaFX. Turn the ship using the mouse pointer and fire with left mouse click. Accelerate and slow down the ship using W and S.
