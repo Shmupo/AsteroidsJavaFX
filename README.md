@@ -1,7 +1,5 @@
 # AsteroidsJavaFX
 
-Simple overview of use/purpose.
-
 ![AsteroidsJavaFX Gameplay](https://github.com/Shmupo/AsteroidsJavaFX/blob/main/AsteroidGameplay.gif "Gameplay")
 
 ## Description
@@ -27,8 +25,6 @@ Asteroids game made in Java using JavaFX. Turn the ship using the mouse pointer 
 * Enjoy!
 
 ## Authors
-
-Contributors names and contact info
 
 Andrew Doan
 aka Shmupo
